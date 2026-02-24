@@ -1,16 +1,10 @@
 """
-URL configuration for school_project.
+URL configuration for the schools app.
 """
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('schools.urls')),  # School management app URLs
+    path('', views.admin_page, name='admin_page'),
+    path('search-school/', views.search_school, name='search_school'),
 ]
-
-# Serve media files during development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
